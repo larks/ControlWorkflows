@@ -1,0 +1,19 @@
+name: readout-simple
+defaults:
+  monitoring_qc_url: "no-op://"
+  monitoring_dd_url: "no-op://"
+  monitoring_readout_url: "no-op://"
+roles:
+  - name: readout-{{ it }}
+    for:
+      range: "{{ hosts }}"
+      var: it
+    constraints:
+      - attribute: machine_id
+        value: "{{ it }}"
+    vars:
+      readout_cfg_uri: "file:/tools/ecs/tpc-ecs-support-files/rdo-simple-cru.cfg"
+    roles:
+      - name: "readout"
+        task:
+          load: readout
