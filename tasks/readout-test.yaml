@@ -15,12 +15,12 @@ bind:
     transport: shmem
 properties: {}
 command: 
-  env:
-    - HOST={{ machine_id }}
+  env: []
   shell: true
   user: "{{ user }}"
   arguments:
     - "{{ readout_cfg_uri }}"
   value: >-
+    echo "hello" >> /tmp/test.txt
     eval `aliswmod load Readout Control-OCCPlugin` &&
     readout.exe
