@@ -16,7 +16,8 @@ bind:
 properties: {}
 command: 
   env:
-    - HOST={{ machine_id }}
+    #- HOST={{ machine_id }}
+    - HOST="test"
   shell: true
   user: "{{ user }}"
   arguments:
